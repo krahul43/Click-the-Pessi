@@ -15,6 +15,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import CustomBtn from '../component/CustomBtn/CustomBtn';
 import colors from '../Utils/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import LottieView from 'lottie-react-native';
+import animation from './animation/Onboarding1.json'
 
 const Onboarding = ({navigation}) => {
   const nextbtn = async () => {
@@ -25,10 +27,15 @@ const Onboarding = ({navigation}) => {
     <>
       <StatusBar backgroundColor={colors.darkBlack} />
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
-        <ImageBackground
+        {/* <ImageBackground
           source={require('../assets/pessi.jpeg')}
           style={styles.image}
-          resizeMode="cover">
+          resizeMode="cover"> */}
+               <LottieView 
+              source={animation}
+              autoPlay
+              style={styles.image}
+            >
           <LinearGradient
             colors={['rgba(245, 245, 245, 0)', 'rgba(245, 245, 245, 1)', 'rgba(245, 245, 245, 1)']}
             style={styles.gradient}
@@ -42,7 +49,7 @@ const Onboarding = ({navigation}) => {
             </View>
             <CustomBtn text='Get Started' onPress={()=>nextbtn()}/>
           </LinearGradient>
-        </ImageBackground>
+        </LottieView>
       </SafeAreaView>
     </>
   );
@@ -62,8 +69,7 @@ const styles = StyleSheet.create({
     },
     image: {
       width: wp('100%'),
-      height: hp('70%%'),
-   
+      height: hp('70%'),
     },
     txtView: {
       marginTop: hp('19%'),

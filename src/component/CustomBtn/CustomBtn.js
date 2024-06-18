@@ -40,14 +40,6 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 4,
   },
-  loadingState: {
-    borderRadius: 50,
-    width: wp('14%'),
-    height: wp('14%'),
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   buttonText: {
     fontSize: hp('2.8%'),
     textAlign: 'center',
