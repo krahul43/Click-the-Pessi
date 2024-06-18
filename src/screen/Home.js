@@ -1,18 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Animated,
-  Dimensions,
-  Button,
-} from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Animated, Dimensions } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import colors from '../Utils/colors';
 import LottieView from 'lottie-react-native';
 import animation from './animation/gameover.json';
@@ -35,11 +23,14 @@ const Home = () => {
   const animatedValue3 = React.useRef(new Animated.ValueXY()).current;
   const animatedValue4 = React.useRef(new Animated.ValueXY()).current;
 
-  const animatedValues = [
-    animatedValue1,
-    animatedValue2,
-    animatedValue3,
-    animatedValue4,
+  const animatedValues = [animatedValue1, animatedValue2, animatedValue3, animatedValue4];
+
+  // Add different images for each view
+  const imageSources = [
+    require('../assets/pessi4.jpeg'),
+    require('../assets/pessi3.jpeg'),
+    require('../assets/pessi2.jpeg'),
+    require('../assets/pessi1.jpeg'),
   ];
 
   // useEffect to set initial positions
@@ -60,7 +51,7 @@ const Home = () => {
       const randomX = Math.random() * (screenWidth - imageSize);
       const randomY = Math.random() * centerY; // Only in upper area
       Animated.spring(animatedValues[index], {
-        toValue: {x: randomX, y: randomY},
+        toValue: { x: randomX, y: randomY },
         useNativeDriver: false,
       }).start();
       setSelectedImage(null);
@@ -68,7 +59,7 @@ const Home = () => {
       // Move to the center of the screen
       const centerX = (screenWidth - imageSize) / 2;
       Animated.spring(animatedValues[index], {
-        toValue: {x: centerX, y: centerY},
+        toValue: { x: centerX, y: centerY },
         useNativeDriver: false,
       }).start();
       setSelectedImage(index);
@@ -89,11 +80,9 @@ const Home = () => {
     setClickCount(0);
     setGameOver(true);
     setTimeout(() => {
-      setGameOver(false); 
-    }, 2000); 
+      setGameOver(false);
+    }, 2000); // 2 seconds delay
   };
-
-
 
   return (
     <View style={styles.container}>
@@ -115,7 +104,7 @@ const Home = () => {
               },
             ]}>
             <Image
-              source={require('../assets/pessi.jpeg')}
+              source={imageSources[index]} // Use different image for each view
               style={styles.imageContent}
             />
           </Animated.View>
@@ -185,7 +174,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: colors.darkBlack,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 4,
