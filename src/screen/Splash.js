@@ -15,7 +15,7 @@ const Splash = ({navigation}) => {
         </View>
         <Text
           style={[styles.text, {marginLeft: wp('1.4%'), fontSize: hp('4%')}]}>
-          lick The Pessi
+          lick the Pessi
         </Text>
       </View>
     </View>
